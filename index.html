@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EP&amp;Co — Small games and apps, built by one person with AI</title>
+<meta name="description" content="EP&Co is a one-person studio in South Korea building casual games and study apps with AI.">
+<meta property="og:title" content="EP&Co">
+<meta property="og:description" content="A one-person studio in South Korea building casual games and study apps with AI.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111827'/%3E%3Ctext x='32' y='42' font-family='Arial,Helvetica,sans-serif' font-size='26' font-weight='700' fill='%23f5b942' text-anchor='middle'%3EEP%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #faf8f4;
+    --ink: #151821;
+    --muted: #5d6472;
+    --line: #e4dfd5;
+    --card: #ffffff;
+    --accent: #c9821a;
+    --accent-ink: #151821;
+    --chip: #f1ece2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101319;
+      --ink: #f1eee8;
+      --muted: #9aa1ae;
+      --line: #262b36;
+      --card: #171b24;
+      --accent: #f5b942;
+      --accent-ink: #151821;
+      --chip: #1e232e;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+  header { padding: 22px 0; }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .mark { font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
+  .mark span { color: var(--accent); }
+  .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+  .lang button {
+    appearance: none; border: 0; background: transparent; color: var(--muted);
+    font: inherit; font-size: 13px; font-weight: 600; padding: 6px 14px; cursor: pointer;
+  }
+  .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+
+  .hero { padding: 56px 0 44px; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 600; color: var(--muted);
+    background: var(--chip); border-radius: 999px; padding: 5px 12px; margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(34px, 7vw, 60px); line-height: 1.08; letter-spacing: -0.035em;
+    margin: 0 0 20px; font-weight: 800;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+  .lead { font-size: clamp(16px, 2.4vw, 19px); color: var(--muted); max-width: 620px; margin: 0 0 28px; }
+  .cta {
+    display: inline-block; background: var(--accent); color: var(--accent-ink); text-decoration: none;
+    font-weight: 700; padding: 12px 20px; border-radius: 10px;
+  }
+  .cta:hover { filter: brightness(1.05); }
+
+  section { padding: 40px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 22px; font-weight: 700; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+  .card .no { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; }
+  .card h3 { margin: 8px 0 8px; font-size: 18px; letter-spacing: -0.01em; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .status {
+    display: inline-block; margin-top: 14px; font-size: 12px; font-weight: 600; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
+  }
+
+  .how { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .how p { margin: 0 0 12px; color: var(--muted); }
+  .how strong { color: var(--ink); }
+  .facts { list-style: none; margin: 0; padding: 0; }
+  .facts li { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .facts li:first-child { border-top: 1px solid var(--line); }
+  .facts span:first-child { color: var(--muted); }
+  .facts span:last-child { font-weight: 600; text-align: right; }
+
+  .contact a { color: var(--ink); font-size: clamp(22px, 4.6vw, 34px); font-weight: 800; letter-spacing: -0.02em; text-decoration: none; border-bottom: 3px solid var(--accent); }
+  .contact p { color: var(--muted); margin: 14px 0 0; }
+
+  footer { padding: 28px 0 44px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+
+  [data-ko] { display: none; }
+  html[lang="ko"] [data-ko] { display: revert; }
+  html[lang="ko"] [data-en] { display: none; }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .how { grid-template-columns: 1fr; }
+    .hero { padding: 36px 0 32px; }
+    .wrap { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="mark">EP<span>&amp;</span>Co</div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set="en" aria-pressed="true">EN</button>
+      <button type="button" data-set="ko" aria-pressed="false">KO</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <span class="eyebrow" data-en>One-person studio · South Korea</span>
+    <span class="eyebrow" data-ko>1인 스튜디오 · 대한민국</span>
+
+    <h1 data-en>Small games and apps,<br>built by <em>one person</em> with AI.</h1>
+    <h1 data-ko>작은 게임과 앱을<br><em>혼자서</em>, AI와 함께 만듭니다.</h1>
+
+    <p class="lead" data-en>EP&amp;Co designs, codes and ships casual games and study apps with a team of one. AI does the heavy lifting on code, content and art direction, so ideas reach players faster.</p>
+    <p class="lead" data-ko>EP&amp;Co는 캐주얼 게임과 학습 앱을 한 사람이 기획하고 만들어 내놓는 스튜디오입니다. 코드와 콘텐츠, 아트 방향 작업을 AI와 함께 해서 아이디어를 더 빨리 이용자에게 전합니다.</p>
+
+    <a class="cta" href="mailto:ts@epnco.kr" data-en>Get in touch</a>
+    <a class="cta" href="mailto:ts@epnco.kr" data-ko>연락하기</a>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2 data-en>What we are building</h2>
+      <h2 data-ko>만들고 있는 것</h2>
+
+      <div class="grid">
+        <div class="card">
+          <div class="no">01</div>
+          <h3 data-en>Casual mini-games</h3>
+          <h3 data-ko>캐주얼 미니게임</h3>
+          <p data-en>Short, idea-driven games you can pick up in a minute, made for mini-app platforms in Korea.</p>
+          <p data-ko>1분이면 시작할 수 있는 아이디어 중심의 짧은 게임. 국내 미니앱 플랫폼용으로 만듭니다.</p>
+          <span class="status" data-en>In development</span>
+          <span class="status" data-ko>개발 중</span>
+        </div>
+        <div class="card">
+          <div class="no">02</div>
+          <h3 data-en>Life-simulation game</h3>
+          <h3 data-ko>인생 시뮬레이션 게임</h3>
+          <p data-en>A mobile game where you start over in Korea in the year 2000 and live through the decades again.</p>
+          <p data-ko>2000년의 한국으로 돌아가 다시 살아 보는 모바일 게임.</p>
+          <span class="status" data-en>In development</span>
+          <span class="status" data-ko>개발 중</span>
+        </div>
+        <div class="card">
+          <div class="no">03</div>
+          <h3 data-en>Exam-prep apps</h3>
+          <h3 data-ko>자격증 학습 앱</h3>
+          <p data-en>Web apps for practising past questions from Korean engineer certification exams, with clear explanations.</p>
+          <p data-ko>국가기술자격 기사 시험의 기출문제를 해설과 함께 풀어 보는 웹앱.</p>
+          <span class="status" data-en>In development</span>
+          <span class="status" data-ko>개발 중</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap how">
+      <div>
+        <h2 data-en>How we work</h2>
+        <h2 data-ko>일하는 방식</h2>
+        <p data-en><strong>One person, many hands.</strong> Planning, code, text and visuals are made in close collaboration with AI tools, then tested and finished by hand.</p>
+        <p data-ko><strong>한 사람, 여러 개의 손.</strong> 기획과 코드, 글, 그림을 AI 도구와 함께 만들고, 직접 확인하고 다듬어 완성합니다.</p>
+        <p data-en>We keep things small on purpose: one clear idea per product, shipped quickly and improved from real feedback.</p>
+        <p data-ko>일부러 작게 만듭니다. 제품 하나에 분명한 아이디어 하나를 담아 빨리 내놓고, 실제 반응을 보며 고칩니다.</p>
+      </div>
+      <div>
+        <h2 data-en>At a glance</h2>
+        <h2 data-ko>한눈에 보기</h2>
+        <ul class="facts">
+          <li><span data-en>Started</span><span data-ko>시작</span><span data-en>October 2026</span><span data-ko>2026년 10월</span></li>
+          <li><span data-en>Based in</span><span data-ko>위치</span><span data-en>South Korea</span><span data-ko>대한민국</span></li>
+          <li><span data-en>Team</span><span data-ko>구성</span><span data-en>1 founder</span><span data-ko>창업자 1명</span></li>
+          <li><span data-en>Stage</span><span data-ko>단계</span><span data-en>Pre-launch</span><span data-ko>출시 준비 중</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="wrap">
+      <h2 data-en>Contact</h2>
+      <h2 data-ko>연락처</h2>
+      <a href="mailto:ts@epnco.kr">ts@epnco.kr</a>
+      <p data-en>TaeSeong Kim, founder</p>
+      <p data-ko>김태성, 대표</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 EP&amp;Co</div>
+</footer>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.lang button');
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-set') === lang ? 'true' : 'false');
+      });
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.getAttribute('data-set')); });
+    });
+    var nav = (navigator.language || '').toLowerCase();
+    if (nav.indexOf('ko') === 0) setLang('ko');
+  })();
+</script>
+</body>
+</html>
